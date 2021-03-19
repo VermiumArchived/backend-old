@@ -1,11 +1,10 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const api = express();
+const APIv1 = require("./api/v1");
 
-app.use("/api/v1/authentication", require("./api/v1/authentication"));
+const port = 3000;
 
-app.get("/", function (req, res) {
-  res.send("Hello from root route.");
-});
+api.use("/api/v1", APIv1);
 
-app.listen(3000);
-console.log("Express started on port 3000");
+api.listen(port);
+console.log("Express started on port " + port);
