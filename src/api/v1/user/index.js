@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 
 const api = express.Router();
 
-const dbConnection = require("./dbConnection");
+const dbConnection = require("../../../db");
 
 // parse requests of content-type - application/json
 api.use(bodyParser.json());
