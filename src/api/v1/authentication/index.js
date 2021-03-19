@@ -1,17 +1,17 @@
-var express = require("express");
+const express = require("express");
 const bodyParser = require("body-parser");
-var api = express.Router();
+
+const api = express.Router();
 
 const dbConfig = require("./config/db");
+const initial = require("./initial");
 
 // parse requests of content-type - application/json
 api.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 api.use(bodyParser.urlencoded({ extended: true }));
-
 const db = require("./models");
-const Role = db.role;
 
 db.mongoose
   .connect(
@@ -33,40 +33,6 @@ db.mongoose
 require("./routes/auth")(api);
 require("./routes/user")(api);
 
-function initial() {
-  Role.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Role({
-        name: "user",
-      }).save((err) => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'user' to roles collection");
-      });
-
-      new Role({
-        name: "moderator",
-      }).save((err) => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'moderator' to roles collection");
-      });
-
-      new Role({
-        name: "admin",
-      }).save((err) => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'admin' to roles collection");
-      });
-    }
-  });
-}
+initial();
 
 module.exports = api;
