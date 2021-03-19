@@ -1,5 +1,7 @@
 module.exports = {
-  HOST: "localhost",
-  PORT: 27017,
-  DB: "bezkoder_db",
+  HOST: "host",
+  USERNAME: "user",
+  PASSWORD: "pass",
+  PORT: port, // If using this remove +srv in index.js
+  DB: "db",
 };
