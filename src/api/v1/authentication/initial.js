@@ -1,4 +1,4 @@
-const db = require("./models");
+const db = require("../../../db/models");
 const Role = db.role;
 
 function initial() {
@@ -32,6 +32,26 @@ function initial() {
         }
 
         console.log("added 'admin' to roles collection");
+      });
+
+      new Role({
+        name: "school",
+      }).save((err) => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'school' to roles collection");
+      });
+
+      new Role({
+        name: "teacher",
+      }).save((err) => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'teacher' to roles collection");
       });
     }
   });
