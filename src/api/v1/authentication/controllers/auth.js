@@ -1,5 +1,5 @@
 const config = require("../config/auth");
-const db = require("../models");
+const db = require("../../../../db/models");
 const User = db.user;
 const Role = db.role;
 
