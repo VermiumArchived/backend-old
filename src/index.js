@@ -2,7 +2,7 @@ var express = require("express");
 
 var app = express();
 
-app.use("/api/authentication", require("./api/authentication"));
+app.use("/api/v1/authentication", require("./api/v1/authentication"));
 
 app.get("/", function (req, res) {
   res.send("Hello from root route.");
