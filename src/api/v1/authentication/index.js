@@ -14,8 +14,7 @@ api.use(bodyParser.urlencoded({ extended: true }));
 
 dbConnection();
 
-require("./routes/auth")(api);
-require("./routes/user")(api);
+require("./routes")(api);
 
 initial();
 
